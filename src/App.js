@@ -10,17 +10,14 @@ class App extends React.Component {
     super(props);
     this.state={myData: null};
   };
-
   setInputText=(data)=>this.setState({myData: data});
-  
   render(){
     const { myData } = this.state;
-    console.log(myData && myData.split('\n').length)
 
     if(!myData){
       return (
         <div className='App'>
-          <ReadFile setData={this.setInputText}/>
+          <ReadFile setData={this.setInputText} setLoading={this.setLoading}/>
         </div>
       );
     }
