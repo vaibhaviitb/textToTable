@@ -3,7 +3,7 @@ import Pagination from "./pagination";
 import SearchBox from "./searchbox";
 import _ from "lodash";
 
-const defaultDelimiter='|';
+const defaultDelimiter = "|";
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -18,12 +18,12 @@ class App extends React.Component {
   componentDidMount() {
     this.createTable();
   }
-  componentDidUpdate(prevProps, prevState){
-      const { delimiter, linesPerPage }= this.state;
-      if(prevState.delimiter !== this.state.delimiter){
-          console.log('component updated with', delimiter)
-          this.createTable();
-      }
+  componentDidUpdate(prevProps, prevState) {
+    const { delimiter, linesPerPage } = this.state;
+    if (prevState.delimiter !== this.state.delimiter) {
+      console.log("component updated with", delimiter);
+      this.createTable();
+    }
   }
   myDataToMatrix = myData => {
     const delimiter = this.state.delimiter || defaultDelimiter;
@@ -31,7 +31,7 @@ class App extends React.Component {
     this.setState({ tableData: matrix });
   };
   textToTableRows = matrix =>
-    matrix.map((row) => (
+    matrix.map(row => (
       <tr>
         {row.map(el => (
           <td>{el}</td>
@@ -50,7 +50,15 @@ class App extends React.Component {
     console.log("new delimiter is" + delimiter);
     this.setState({ delimiter });
   };
-  setLines = lines => this.setState({ linesPerPage: lines });
+  setLines = lines => {
+    const parsedValue = Number(lines);
+    if(isNaN(parsedValue)) {
+      alert('Please insert a numeric value');
+      this.setState({ linesPerPage: 2 })
+    } else {
+      this.setState({ linesPerPage: parsedValue })
+    }
+  };
 
   onChangePage = pageOfItems => {
     this.setState({ displayData: pageOfItems });
@@ -64,53 +72,32 @@ class App extends React.Component {
 
     return (
       <div>
-        <SearchBox
-          onChange={this.setDelimiter}
-          placeholder="Enter delimiter character"
-        />
-        <SearchBox
-          onChange={this.setLines}
-          placeholder="Enter the number of lines"
-        />
-        <table>
+        <form className="form-inline text-elements">
+            <SearchBox
+              onChange={this.setDelimiter}
+              placeholder="Enter delimiter"
+              label="Delimiter:"
+              name="delimiter"
+            />
+            <SearchBox
+              classes= 'lines-text'
+              onChange={this.setLines}
+              placeholder="Enter no. of lines"
+              label="No. of Lines:"
+              name="lines"
+            />
+        </form>
+        <table className="table table-striped table-bordered table-hover">
           <tbody>{this.textToTableRows(displayData)}</tbody>
         </table>
-        <Pagination items={tableData} onChangePage={this.onChangePage} linesPerPage={linesPerPage} />
+        <Pagination
+          items={tableData}
+          onChangePage={this.onChangePage}
+          linesPerPage={linesPerPage}
+        />
       </div>
     );
   }
 }
 
 export default App;
-
-// const addParentBlock = el=><div>{el}</div>;
-// class Pagination extends React.Component{
-//     constructor(props){
-//         super(props);
-//         this.state= {currentPage: 1};
-//     }
-//     displayPages=noOfPages=>{
-//         console.log(noOfPages)
-//         this.buttons = [];
-//         // if(noOfPagescurrentPage){
-//         //     return;
-//         // }
-//         for(let i=1; i<=noOfPages; i++){
-//             this.buttons.push(
-//             <button>{i}</button>
-//             )
-//         }
-//         return
-//     }
-//     render(){ //
-//         const { myData } = this.props;
-
-//         const noOfPages = myData && Math.ceil(myData.length/10) || 0;
-//         this.displayPages(noOfPages);
-//         console.log(this.buttons)
-//         const render  = this.buttons.length ? addParentBlock(this.buttons) : null
-//         return(
-//             render
-//         );
-//     }
-// }
