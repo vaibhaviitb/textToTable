@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/textToTable/static/css/main.a4b810c1.chunk.css",
+    "main.js": "/textToTable/static/js/main.c38b833f.chunk.js",
+    "main.js.map": "/textToTable/static/js/main.c38b833f.chunk.js.map",
+    "runtime-main.js": "/textToTable/static/js/runtime-main.3851b68b.js",
+    "runtime-main.js.map": "/textToTable/static/js/runtime-main.3851b68b.js.map",
+    "static/css/2.67123b20.chunk.css": "/textToTable/static/css/2.67123b20.chunk.css",
+    "static/js/2.5e6d0db4.chunk.js": "/textToTable/static/js/2.5e6d0db4.chunk.js",
+    "static/js/2.5e6d0db4.chunk.js.map": "/textToTable/static/js/2.5e6d0db4.chunk.js.map",
+    "index.html": "/textToTable/index.html",
+    "precache-manifest.a6a86c099f87117381c387ef39088ca1.js": "/textToTable/precache-manifest.a6a86c099f87117381c387ef39088ca1.js",
+    "service-worker.js": "/textToTable/service-worker.js",
+    "static/css/2.67123b20.chunk.css.map": "/textToTable/static/css/2.67123b20.chunk.css.map",
+    "static/css/main.a4b810c1.chunk.css.map": "/textToTable/static/css/main.a4b810c1.chunk.css.map",
+    "static/js/2.5e6d0db4.chunk.js.LICENSE": "/textToTable/static/js/2.5e6d0db4.chunk.js.LICENSE"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.3851b68b.js",
+    "static/css/2.67123b20.chunk.css",
+    "static/js/2.5e6d0db4.chunk.js",
+    "static/css/main.a4b810c1.chunk.css",
+    "static/js/main.c38b833f.chunk.js"
+  ]
+}
